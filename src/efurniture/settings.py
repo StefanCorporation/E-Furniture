@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # Custom apps
     'main.apps.MainConfig',
+    'goods.apps.GoodsConfig',
 ]
 
 MIDDLEWARE = [
