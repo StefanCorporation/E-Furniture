@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 
-class Categorys(models.Model):
+class Categories(models.Model):
     name = models.CharField(max_length=159, unique=True, blank=True, verbose_name='Name')
     slug = models.SlugField(max_length=239, unique=True, blank=True, null=True, verbose_name='SLUG-URL')
 
@@ -22,7 +22,7 @@ class Products(models.Model):
     price = models.DecimalField(default=0.00, max_digits=7, decimal_places=2, verbose_name='Price')
     discount = models.DecimalField(default=0.00, max_digits=7, decimal_places=2, verbose_name='Discount')
     quantity = models.PositiveBigIntegerField(default=0, verbose_name='Quantity')
-    category = models.ForeignKey(to=Categorys, on_delete=models.CASCADE, verbose_name='Category')
+    category = models.ForeignKey(to=Categories, on_delete=models.CASCADE, verbose_name='Category')
 
 
     class Meta:
