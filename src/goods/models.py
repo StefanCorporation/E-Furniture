@@ -8,6 +8,10 @@ class Categories(models.Model):
     slug = models.SlugField(max_length=239, unique=True, blank=True, null=True, verbose_name='SLUG-URL')
 
 
+    def __str__(self):
+        return f'Category name: {self.name}'
+
+
     class Meta:
         db_table = 'category'  
         verbose_name = 'Category'
@@ -20,9 +24,13 @@ class Products(models.Model):
     description = models.TextField(blank=True, null=True, verbose_name='description')
     image = models.ImageField(upload_to='goods_images', blank=True, null=True, verbose_name='Images')
     price = models.DecimalField(default=0.00, max_digits=7, decimal_places=2, verbose_name='Price')
-    discount = models.DecimalField(default=0.00, max_digits=7, decimal_places=2, verbose_name='Discount')
+    discount = models.DecimalField(default=0.00, max_digits=4, decimal_places=2, verbose_name='Discount')
     quantity = models.PositiveBigIntegerField(default=0, verbose_name='Quantity')
     category = models.ForeignKey(to=Categories, on_delete=models.CASCADE, verbose_name='Category')
+
+
+    def __str__(self):
+        return f'{self.name} | Quantity - {self.quantity} | {self.category.name}'
 
 
     class Meta:
