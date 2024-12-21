@@ -11,7 +11,7 @@ def index(request):
         'categories': all_categories
         }
 
-    return render(request, 'main/index.html', context)
+    return render(request, 'main/index.html', context=context)
 
 
 def about(request):

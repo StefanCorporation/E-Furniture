@@ -5,13 +5,22 @@ from goods.models import Categories, Products
 
 
 def catalog(request):
-    all_categories = Categories.objects.all()
-    context = {'title': 'Catalog', 'categories': all_categories}
+    goods = Products.objects.all()
+
+    context = {
+        'title': 'Catalog',
+        'goods': goods
+        }
  
     return render(request, 'goods/catalog.html', context=context)
+
 
 
 def product(request):
     all_products = Products.objects.all()
 
-    return render(request,'goods/product.html', {'products': all_products})
+    context = {
+        'products': all_products
+    }
+
+    return render(request,'goods/product.html', context=context)
