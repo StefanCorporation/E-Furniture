@@ -33,6 +33,17 @@ class Products(models.Model):
         return f'{self.name} | Quantity - {self.quantity} | {self.category.name}'
 
 
+    def display_id(self):
+        return f"{self.id:05}"
+    
+
+    def sell_price(self):
+        if self.discount:
+            return round(self.price - self.price * self.discount / 100, 2)
+
+        return self.price
+
+
     class Meta:
         db_table = 'product'  
         verbose_name = 'Product'
