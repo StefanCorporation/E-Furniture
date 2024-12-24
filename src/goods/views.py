@@ -6,12 +6,10 @@ from goods.models import Categories, Products
 
 def catalog(request):
     goods = Products.objects.all()
-    categories = Categories.objects.all() 
 
     context = {
         'title': 'Catalog',
         'goods': goods,
-        'categories': categories
         }
  
     return render(request, 'goods/catalog.html', context=context)
