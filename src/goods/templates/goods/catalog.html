@@ -59,7 +59,7 @@
                 <img src="{% static 'deps/images/NotFoundImg.png' %}" alt="NoFoto" >
             {% endif %}
             <div class="card-body">
-                <a href="../goods/product.html">
+                <a href="{% url 'goods:product' product.slug %}">
                     <p class="card-title">{{ product.name }}</p>
                 </a>
                 <p class="card-text text-truncate">{{ product.description }}</p>
