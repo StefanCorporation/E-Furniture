@@ -1,16 +1,22 @@
 from django.shortcuts import render
-from goods.models import Categories, Products
+from goods.models import Products
 
 # Create your views here.
 
 
-def catalog(request):
-    goods = Products.objects.all()
+def catalog(request, category_slug):
+
+    if category_slug == 'all':
+        goods = Products.objects.all()
+    else:
+        # Через filter() мы филтруем по категории, обращаясь к полю category
+        # ЧЕРЕЗ САМ ТОВАР с помощю ForeignKey()
+        goods = Products.objects.filter(category__slug=category_slug) 
 
     context = {
         'title': 'Catalog',
         'goods': goods,
-        }
+    }
  
     return render(request, 'goods/catalog.html', context=context)
 
