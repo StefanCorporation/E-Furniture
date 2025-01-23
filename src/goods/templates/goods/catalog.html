@@ -1,4 +1,4 @@
-{% extends "main/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 {% load goods_tags %}
 
@@ -120,8 +120,11 @@
             </div>
         </div>
         </div>
+        
     {% endfor %}
+    
 </div>
+
 <!-- Пагинация -->
 {% if goods%}
     <nav aria-label="Page navigation example">
@@ -169,4 +172,5 @@
         <p class="m-0 text-center text-white">Copyright &copy; Home Python Hub Studio 2023</p>
     </div>
     </footer>
+    
 {% endblock %}

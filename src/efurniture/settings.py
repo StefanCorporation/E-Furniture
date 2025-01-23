@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # Custom apps
     'main.apps.MainConfig',
     'goods.apps.GoodsConfig',
+    'users.apps.UsersConfig',
     
 ]
 
@@ -67,7 +68,7 @@ ROOT_URLCONF = 'efurniture.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
