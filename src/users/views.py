@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.urls import reverse
 
 from users.forms import UserLoginForm, UserRegistrationForm, ProfileForm
@@ -23,6 +23,7 @@ def login(request):
 
             if user:
                 auth.login(request, user)
+                messages.success(request, f'{request.user.username}: You have successfully logged in!')
                 return HttpResponseRedirect(reverse('main:index'))
 
     else:
@@ -46,6 +47,7 @@ def registration(request):
             
             user = form.instance
             auth.login(request, user)
+            messages.success(request, f'{request.user.username}: Registration was successful!')
 
             return HttpResponseRedirect(reverse('main:index'))
     else:
@@ -67,7 +69,7 @@ def profile(request):
 
         if form.is_valid():                      
             form.save()
-            
+            messages.success(request, f'{request.user.username}: Profile updated successeful!')
             return HttpResponseRedirect(reverse('users:profile'))
     else:
         form = ProfileForm(instance=request.user)
@@ -83,4 +85,5 @@ def profile(request):
 @login_required
 def logout(request):
     auth.logout(request)
+    messages.success(request, f'{request.user.username} You logged out!')
     return redirect(reverse('main:index'))
