@@ -27,6 +27,7 @@ urlpatterns = [
     path('', include('main.urls', namespace='main')),
     path('efurniture/', include('goods.urls', namespace='goods')),
     path('efurniture/users/', include('users.urls', namespace='users')),
+    path('efurniture/', include('carts.urls', namespace='carts')),
 ] 
 
 
